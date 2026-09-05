@@ -3674,8 +3674,8 @@
         <translation>Documentation</translation>
     </message>
     <message>
-        <source>Questions and support on Discord</source>
-        <translation>Questions et soutien sur Discord</translation>
+        <source>Questions and support</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

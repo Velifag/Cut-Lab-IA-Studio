@@ -858,11 +858,7 @@ if(ANDROID)
          "audio-effects/*/audio-effect.json"
          "audio-effects/*/thumbnail.png"
          "effect-templates/*/template.json"
-         "effect-templates/*/thumbnail.png"
-         "fonts/*/family.json"
-         "fonts/*/*.ttf"
-         "fonts/*/*.otf"
-         "fonts/*/*.txt")
+         "effect-templates/*/thumbnail.png")
     list(REMOVE_DUPLICATES DRIFT_PACKAGE_FILES)
     qt_add_resources(drift "drift_packages"
         PREFIX "/packages"
@@ -1029,12 +1025,6 @@ function(drift_copy_audio_effects target)
     drift_stage_packages(${target} audio-effects)
 endfunction()
 
-# Fonts ship as the "fonts" addon the same way; bundling them removes the runtime dependency
-# on the addon service for the OFL/UFL-licensed font set.
-function(drift_copy_fonts target)
-    drift_stage_packages(${target} fonts)
-endfunction()
-
 # Stage an ONNX Runtime into <appDir>/onnxruntime/lib, which is one of the roots
 # drift::ort::ensureLoaded() searches — the same relationship the bundled effects have with
 # installed effect addons, and ranked the same way: an installed Acceleration addon wins over this.
@@ -1068,7 +1058,6 @@ if(NOT ANDROID)
     drift_copy_effect_templates(drift)
     drift_copy_transitions(drift)
     drift_copy_audio_effects(drift)
-    drift_copy_fonts(drift)
     drift_bundle_onnxruntime(drift)
 endif()
 
@@ -1092,7 +1081,7 @@ else()
     # the app searches <appDir>/<subdir> (GpuPackageParse::defaultSearchPaths). Installing
     # them here (rather than via the DRIFT_*_DIR env vars) keeps installed addons able to
     # supersede the bundled copies.
-    foreach(_assetdir effects transitions effect-templates audio-effects fonts)
+    foreach(_assetdir effects transitions effect-templates audio-effects)
         install(DIRECTORY ${CMAKE_SOURCE_DIR}/${_assetdir}
                 DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT drift)
     endforeach()

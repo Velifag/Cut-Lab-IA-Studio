@@ -3640,6 +3640,10 @@
         <translation>දෘඪාංග: %1</translation>
     </message>
     <message>
+        <source>Questions and support</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Supported</source>
         <translation>සහාය දක්වයි</translation>
     </message>
@@ -3670,10 +3674,6 @@
     <message>
         <source>Documentation</source>
         <translation>ලේඛනගත කිරීම්</translation>
-    </message>
-    <message>
-        <source>Questions and support on Discord</source>
-        <translation>Discord හි ප්‍රශ්න සහ සහාය</translation>
     </message>
 </context>
 <context>

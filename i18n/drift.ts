@@ -3640,6 +3640,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Questions and support</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Supported</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3669,10 +3673,6 @@
     </message>
     <message>
         <source>Documentation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Questions and support on Discord</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
