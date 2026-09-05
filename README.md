@@ -15,6 +15,12 @@
 </p>
 
 <p align="center">
+  <a href="README.md"><strong>English</strong></a> ·
+  <a href="README.pt-BR.md">Português (Brasil)</a> ·
+  <a href="README.es.md">Español</a>
+</p>
+
+<p align="center">
   <a href="https://github.com/Velifag/Cut-Lab-IA-Studio">GitHub</a> ·
   <a href="https://github.com/Velifag/Cut-Lab-IA-Studio/releases/latest">Download</a> ·
   <a href="https://github.com/Velifag/Cut-Lab-IA-Studio/issues">Issues</a> ·
