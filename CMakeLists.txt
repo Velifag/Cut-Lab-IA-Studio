@@ -632,7 +632,7 @@ if(WIN32)
     # console subsystem and Windows opens a console window before the GUI comes up. Qt6::EntryPoint
     # (linked in by Qt6::Core) supplies the WinMain that forwards to main().
     set_target_properties(drift PROPERTIES WIN32_EXECUTABLE TRUE
-        OUTPUT_NAME "Cut Lab[IA] Studio")
+        OUTPUT_NAME "CutLabIA Studio")
     target_sources(drift PRIVATE resources/windows/drift.rc)
     set_source_files_properties(resources/windows/drift.rc PROPERTIES
         OBJECT_DEPENDS "${CMAKE_SOURCE_DIR}/resources/windows/drift.ico")

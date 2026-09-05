@@ -755,7 +755,7 @@ QVariantMap DebugReport::collect()
 QString DebugReport::formatPlainText(const QVariantMap &info)
 {
     QString text;
-    text += QStringLiteral("Cut Lab[IA] Studio debug report\n\n");
+    text += QStringLiteral("CutLabIA Studio debug report\n\n");
 
     text += QStringLiteral("## System\n");
     const QVariantList system = info.value(QStringLiteral("system")).toList();

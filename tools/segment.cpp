@@ -19,8 +19,8 @@ int main(int argc, char *argv[])
     QCoreApplication app(argc, argv);
     // Must match src/main.cpp, or AppDataLocation points somewhere else and the tool cannot see
     // models installed as addons.
-    QCoreApplication::setApplicationName("Cut Lab[IA] Studio");
-    QCoreApplication::setOrganizationName("Cut Lab[IA] Studio");
+    QCoreApplication::setApplicationName("CutLabIA Studio");
+    QCoreApplication::setOrganizationName("CutLabIA Studio");
 
     QTextStream out(stdout);
     QTextStream err(stderr);

@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="Drift_icon.png" alt="Cut Lab[IA] Studio icon" width="128" height="128">
+  <img src="Drift_icon.png" alt="CutLabIA Studio icon" width="128" height="128">
 </p>
 
-<h1 align="center">Cut Lab[IA] Studio</h1>
+<h1 align="center">CutLabIA Studio</h1>
 
 <p align="center">
   <strong>The free desktop editor that makes your videos look finished — not “good enough.”</strong>
@@ -21,7 +21,7 @@
   <a href="LICENSE">License</a>
 </p>
 
-Cut Lab[IA] Studio is a desktop video editor — a fork of [Drift](https://github.com/CutWire-Studios/Drift)
+CutLabIA Studio is a desktop video editor — a fork of [Drift](https://github.com/CutWire-Studios/Drift)
 by CutWire Studios, distributed under the same GPL-3.0 license. Drop in clips, add effects, captions,
 stickers, and music, then export a polished video — with **no subscription, no watermark, and no account**.
 
@@ -53,7 +53,7 @@ See [all releases](https://github.com/Velifag/Cut-Lab-IA-Studio/releases) for pr
 ## Screenshots
 
 <p align="center">
-  <img src="docs/screenshots/main-window.png" alt="The Cut Lab[IA] Studio editor: media bin on the left, video preview in the centre, clip inspector on the right, timeline below" width="900">
+  <img src="docs/screenshots/main-window.png" alt="The CutLabIA Studio editor: media bin on the left, video preview in the centre, clip inspector on the right, timeline below" width="900">
 </p>
 
 <p align="center"><em>Everything in one window — media, preview, inspector, and timeline</em></p>
@@ -161,7 +161,7 @@ an In/Out work area. What you signed off on is what you get.
 
 ## Agent access — let an AI edit with you
 
-Cut Lab[IA] Studio has a built-in **MCP server** for local AI tools. Turn on Agent access and Cursor, Claude Code,
+CutLabIA Studio has a built-in **MCP server** for local AI tools. Turn on Agent access and Cursor, Claude Code,
 or another compatible agent can work in the open project: import media, place and trim clips, change
 effects, capture a still of the composition, and export.
 
@@ -173,15 +173,15 @@ and safety notes live in the [MCP guide](docs/MCP.md).
 
 ## Addons, without bloating the install
 
-Fonts, stickers, extra effects, and speech models download inside Cut Lab[IA] Studio when you need them. Keep the
+Fonts, stickers, extra effects, and speech models download inside CutLabIA Studio when you need them. Keep the
 app light, then grab only the packs that match the video you are making.
 
 Open the Addon Manager from the header, or follow the install prompt when a feature needs a pack.
 
-## Why people pick Cut Lab[IA] Studio
+## Why people pick CutLabIA Studio
 
 Most “free” editors want an account, a watermark, or a subscription the moment the video starts
-looking good. Cut Lab[IA] Studio is the opposite: **yours, on your computer, GPLv3, no login wall.**
+looking good. CutLabIA Studio is the opposite: **yours, on your computer, GPLv3, no login wall.**
 
 It is fast enough for a 30-second social cut and deep enough for a real project — captions, effects,
 audio, cutouts, multicam, and an AI-assisted timeline if you want one.

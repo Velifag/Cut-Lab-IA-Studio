@@ -6,9 +6,9 @@
   #define MyAppSource "dist\\bin"
 #endif
 
-#define MyAppName "Cut Lab[IA] Studio"
-#define MyAppPublisher "Cut Lab[IA] Studio"
-#define MyAppExeName "Cut Lab[IA] Studio.exe"
+#define MyAppName "CutLabIA Studio"
+#define MyAppPublisher "CutLabIA Studio"
+#define MyAppExeName "CutLabIA Studio.exe"
 
 [Setup]
 ; Never change AppId: it is what lets an installer upgrade an existing install

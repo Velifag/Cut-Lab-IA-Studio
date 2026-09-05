@@ -9,7 +9,7 @@ ApplicationWindow {
     id: window
     visible: true
     color: Theme.appBackground
-    title: "Cut Lab[IA] Studio"
+    title: "CutLabIA Studio"
 
     readonly property var projectFilter: [qsTr("Drift project (*.drift)")]
     property bool inEditor: false
