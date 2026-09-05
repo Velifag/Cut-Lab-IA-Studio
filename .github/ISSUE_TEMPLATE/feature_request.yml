@@ -1,14 +1,14 @@
 name: Feature request
-description: Suggest an improvement or new capability for Drift
+description: Suggest an improvement or new capability for Cut Lab[IA] Studio
 title: "[Feature]: "
 labels: ["enhancement"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for sharing an idea for Drift. Pick a category, then describe what you'd like.
+        Thanks for sharing an idea for Cut Lab[IA] Studio. Pick a category, then describe what you'd like.
 
-        **Before filing:** check the [unreleased changelog](https://github.com/CutWire-Studios/Drift/blob/main/CHANGELOG.md) — the feature may already be in progress or landed on `main` since the last release.
+        **Before filing:** check the [unreleased changelog](https://github.com/Velifag/Cut-Lab-IA-Studio/blob/main/CHANGELOG.md) — the feature may already be in progress or landed on `main` since the last release.
 
   - type: dropdown
     id: category

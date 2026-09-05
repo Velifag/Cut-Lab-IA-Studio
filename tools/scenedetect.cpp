@@ -7,7 +7,12 @@
 #include "engine/SceneDetect.h"
 #include "core/Time.h"
 
+#ifdef _WIN32
+#include <io.h>
+#include <process.h>
+#else
 #include <unistd.h>
+#endif
 
 #include <QCoreApplication>
 #include <QElapsedTimer>
@@ -34,8 +39,8 @@ int main(int argc, char *argv[])
     QCoreApplication app(argc, argv);
     // Must match src/main.cpp, or AppDataLocation points somewhere else and the tool cannot
     // see models installed as addons.
-    QCoreApplication::setApplicationName("CutWire Drift");
-    QCoreApplication::setOrganizationName("CutWire Drift");
+    QCoreApplication::setApplicationName("Cut Lab[IA] Studio");
+    QCoreApplication::setOrganizationName("Cut Lab[IA] Studio");
 
     QTextStream out(stdout);
     QTextStream err(stderr);
@@ -114,7 +119,11 @@ int main(int argc, char *argv[])
     QString error;
     // Progress goes to stderr so it never pollutes --csv on stdout, and only when that is a
     // terminal — redirected, the carriage returns would pile up into one unreadable line.
+#ifdef _WIN32
+    const bool showProgress = !csv && _isatty(_fileno(stderr));
+#else
     const bool showProgress = !csv && ::isatty(fileno(stderr));
+#endif
     int lastPercent = -1;
     const drift::SceneAnalysis analysis = fromCache ? cached : drift::detectScenes(
         request,

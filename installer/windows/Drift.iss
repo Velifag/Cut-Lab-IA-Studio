@@ -6,9 +6,9 @@
   #define MyAppSource "dist\\bin"
 #endif
 
-#define MyAppName "Drift"
-#define MyAppPublisher "CutWire Studios"
-#define MyAppExeName "drift.exe"
+#define MyAppName "Cut Lab[IA] Studio"
+#define MyAppPublisher "Cut Lab[IA] Studio"
+#define MyAppExeName "Cut Lab[IA] Studio.exe"
 
 [Setup]
 ; Never change AppId: it is what lets an installer upgrade an existing install
@@ -17,7 +17,7 @@ AppId={{1FC80696-7700-464A-8E35-CCBB3239EDFB}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 AppPublisher={#MyAppPublisher}
-AppSupportURL=https://github.com/CutWire-Studios/Drift/issues
+AppSupportURL=https://github.com/Velifag/Cut-Lab-IA-Studio/issues
 DefaultDirName={autopf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 ArchitecturesAllowed=x64compatible

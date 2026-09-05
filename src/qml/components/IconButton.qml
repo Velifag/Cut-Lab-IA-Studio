@@ -21,9 +21,13 @@ AbstractButton {
     property string variant: "text"
     // "auto" | "press" | "confirm" | "select" | "none". auto is a light press.
     property string haptic: "auto"
+    // Inactive-state icon color. Defaults to the shared muted tone; a rail with many
+    // always-visible icons (no active/hover state to lean on) can override this to read
+    // more clearly against the panel background.
+    property color mutedColor: Theme.mutedForeground
 
     readonly property bool hasLabel: text.length > 0
-    readonly property color _fg: active ? Theme.panelSecondaryForeground : Theme.mutedForeground
+    readonly property color _fg: active ? Theme.panelSecondaryForeground : root.mutedColor
     readonly property color _labelFg: active ? Theme.panelSecondaryForeground : Theme.foreground
 
     implicitWidth: hasLabel ? Math.ceil(labeledRow.implicitWidth + Theme.spacingMd * 2)

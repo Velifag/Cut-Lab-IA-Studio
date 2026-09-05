@@ -57,9 +57,9 @@ option(DRIFT_AUTO_UPDATE_TRANSLATIONS "Run lupdate as part of the default build"
 # The token is NOT a secret. It ships inside every binary and is trivially extractable; it exists
 # so the bucket cannot be crawled or hotlinked, which would cost operations for someone else's
 # benefit. That is also why it is fine in CMakeCache.txt.
-set(DRIFT_ADDON_INDEX_URL "https://drift-addons.cutwire.org/v1/index"
+set(DRIFT_ADDON_INDEX_URL "https://srv860468.hstgr.cloud/addons/v1/index.json"
     CACHE STRING "Addon index endpoint; empty disables the addon service")
-set(DRIFT_ADDON_CLIENT_TOKEN "79a388bba9301cacc81cc6eb0724c81e948e1b27c69aee1b"
+set(DRIFT_ADDON_CLIENT_TOKEN "cutlab-a1f3c9e7b2d84066"
     CACHE STRING "Client token sent to the addon service as X-Drift-Client")
 
 # --- Update check -----------------------------------------------------------
@@ -70,7 +70,7 @@ set(DRIFT_ADDON_CLIENT_TOKEN "79a388bba9301cacc81cc6eb0724c81e948e1b27c69aee1b"
 # Set it to an empty string for builds a package manager owns — the Flatpak manifests and the Arch
 # PKGBUILD all do. There, pacman or flatpak fetches the update on its own schedule and an in-app
 # nag is noise the user cannot act on (Flathub's quality guidelines say as much).
-set(DRIFT_UPDATE_FEED_URL "https://api.github.com/repos/CutWire-Studios/Drift/releases/latest"
+set(DRIFT_UPDATE_FEED_URL "https://api.github.com/repos/Velifag/Cut-Lab-IA-Studio/releases/latest"
     CACHE STRING "Release feed polled for updates; empty disables the update check")
 
 find_package(Qt6 6.5 REQUIRED COMPONENTS Quick QuickControls2 Multimedia Test Concurrent Widgets OpenGL Network QuickEffects Svg)
@@ -631,7 +631,8 @@ if(WIN32)
     # qt_add_executable() forwards to add_executable() without WIN32, so the linker defaults to the
     # console subsystem and Windows opens a console window before the GUI comes up. Qt6::EntryPoint
     # (linked in by Qt6::Core) supplies the WinMain that forwards to main().
-    set_target_properties(drift PROPERTIES WIN32_EXECUTABLE TRUE)
+    set_target_properties(drift PROPERTIES WIN32_EXECUTABLE TRUE
+        OUTPUT_NAME "Cut Lab[IA] Studio")
     target_sources(drift PRIVATE resources/windows/drift.rc)
     set_source_files_properties(resources/windows/drift.rc PROPERTIES
         OBJECT_DEPENDS "${CMAKE_SOURCE_DIR}/resources/windows/drift.ico")
@@ -857,7 +858,11 @@ if(ANDROID)
          "audio-effects/*/audio-effect.json"
          "audio-effects/*/thumbnail.png"
          "effect-templates/*/template.json"
-         "effect-templates/*/thumbnail.png")
+         "effect-templates/*/thumbnail.png"
+         "fonts/*/family.json"
+         "fonts/*/*.ttf"
+         "fonts/*/*.otf"
+         "fonts/*/*.txt")
     list(REMOVE_DUPLICATES DRIFT_PACKAGE_FILES)
     qt_add_resources(drift "drift_packages"
         PREFIX "/packages"
@@ -1024,6 +1029,12 @@ function(drift_copy_audio_effects target)
     drift_stage_packages(${target} audio-effects)
 endfunction()
 
+# Fonts ship as the "fonts" addon the same way; bundling them removes the runtime dependency
+# on the addon service for the OFL/UFL-licensed font set.
+function(drift_copy_fonts target)
+    drift_stage_packages(${target} fonts)
+endfunction()
+
 # Stage an ONNX Runtime into <appDir>/onnxruntime/lib, which is one of the roots
 # drift::ort::ensureLoaded() searches — the same relationship the bundled effects have with
 # installed effect addons, and ranked the same way: an installed Acceleration addon wins over this.
@@ -1057,6 +1068,7 @@ if(NOT ANDROID)
     drift_copy_effect_templates(drift)
     drift_copy_transitions(drift)
     drift_copy_audio_effects(drift)
+    drift_copy_fonts(drift)
     drift_bundle_onnxruntime(drift)
 endif()
 
@@ -1080,7 +1092,7 @@ else()
     # the app searches <appDir>/<subdir> (GpuPackageParse::defaultSearchPaths). Installing
     # them here (rather than via the DRIFT_*_DIR env vars) keeps installed addons able to
     # supersede the bundled copies.
-    foreach(_assetdir effects transitions effect-templates audio-effects)
+    foreach(_assetdir effects transitions effect-templates audio-effects fonts)
         install(DIRECTORY ${CMAKE_SOURCE_DIR}/${_assetdir}
                 DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT drift)
     endforeach()

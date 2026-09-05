@@ -782,6 +782,11 @@ PanelFrame {
                             variant: "ghost"
                             tooltip: tabLabels[model.tabId]
                             active: root.activeTab === index
+                            // Every icon here is always visible with no hover/active state to
+                            // lean on for most of them, so the shared muted tone (tuned for
+                            // text that sits beside brighter content) reads too faint. Brighten
+                            // it for dark mode only — light mode already has plenty of contrast.
+                            mutedColor: Theme.darkMode ? "#b3b3b3" : Theme.mutedForeground
                             onClicked: root.activeTab = index
 
                             Accessible.role: Accessible.PageTab

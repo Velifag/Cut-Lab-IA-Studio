@@ -109,11 +109,18 @@ private:
     void failTransfer(const QString &id, const QString &message);
     void reloadForKinds(const QStringList &kinds);
     void sweepDownloadCache();
+    // Enqueues id and, if nothing is transferring, starts it immediately. Concurrent transfers on
+    // the shared QNetworkAccessManager were observed corrupting each other's downloads (multiple
+    // "essential" installs firing at once produced "bad magic" .driftpkg files) — only one transfer
+    // runs at a time, and the rest wait their turn here.
+    void queueDownload(const QString &id);
+    void startNextQueued();
 
     QString m_status;
     bool m_refreshing = false;
     QList<QJsonObject> m_remote;
     QHash<QString, std::shared_ptr<Transfer>> m_transfers;
+    QStringList m_installQueue;
     QHash<QString, QString> m_failures;
     // Download links expire after an hour, so an install started from a stale cached index gets
     // rejected. Those ids are re-driven once a fresh index lands; the set stops a rejected-twice

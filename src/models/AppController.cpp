@@ -201,7 +201,7 @@ bool stabilizeTrfIsAscii(const QString &path)
 }
 
 // ffmpeg's filtergraph parser chokes on spaces inside input=/result= even when the
-// argument is already a single QProcess token. The app data dir is "CutWire Drift",
+// argument is already a single QProcess token. The app data dir is "Cut Lab[IA] Studio",
 // so detect/transform always write and read a no-space path in /tmp, then we copy
 // the analysis file into the cache for the next run.
 QString stabilizeFfmpegTrfPath(const QString &clipId)

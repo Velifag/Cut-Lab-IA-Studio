@@ -361,7 +361,7 @@ void AddonManager::refresh(bool force)
 
         const QStringList waiting = std::exchange(m_awaitingFreshIndex, {});
         for (const QString &id : waiting)
-            startDownload(id);
+            queueDownload(id);
     });
 }
 
@@ -396,7 +396,24 @@ void AddonManager::install(const QString &id)
         return;
 
     m_failures.remove(id);
-    startDownload(id);
+    queueDownload(id);
+}
+
+void AddonManager::queueDownload(const QString &id)
+{
+    if (m_transfers.contains(id))
+        return;
+    if (!m_installQueue.contains(id))
+        m_installQueue.append(id);
+    startNextQueued();
+}
+
+void AddonManager::startNextQueued()
+{
+    if (!m_transfers.isEmpty() || m_installQueue.isEmpty())
+        return;
+    const QString next = m_installQueue.takeFirst();
+    startDownload(next);
 }
 
 void AddonManager::startDownload(const QString &id)
@@ -414,6 +431,7 @@ void AddonManager::startDownload(const QString &id)
         if (!m_awaitingFreshIndex.contains(id))
             m_awaitingFreshIndex.append(id);
         refresh(true);
+        startNextQueued();
         return;
     }
 
@@ -430,6 +448,7 @@ void AddonManager::startDownload(const QString &id)
     if (!transfer->file.open(QIODevice::WriteOnly | QIODevice::Append)) {
         m_failures.insert(id, QStringLiteral("Cannot write to the download cache"));
         emit catalogChanged();
+        startNextQueued();
         return;
     }
 
@@ -475,6 +494,7 @@ void AddonManager::finishDownload(const QString &id)
 
     if (transfer->cancelled) {
         m_transfers.remove(id);
+        startNextQueued();
         emit catalogChanged();
         return;
     }
@@ -482,6 +502,7 @@ void AddonManager::finishDownload(const QString &id)
     if (reply->error() != QNetworkReply::NoError) {
         const int status = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
         m_transfers.remove(id);
+        startNextQueued();
 
         // A rejected ticket means the index we started from has gone stale, not that anything is
         // wrong with the addon — fetch a fresh one and pick the download back up where it stopped.
@@ -531,6 +552,7 @@ void AddonManager::beginExtract(const QString &id, const QString &packagePath)
                 const auto [ok, message] = watcher->result();
                 const auto finished = m_transfers.value(id);
                 m_transfers.remove(id);
+                startNextQueued();
                 QFile::remove(packagePath);
 
                 if (!ok) {
@@ -575,6 +597,7 @@ void AddonManager::beginExtract(const QString &id, const QString &packagePath)
 void AddonManager::failTransfer(const QString &id, const QString &message)
 {
     m_transfers.remove(id);
+    startNextQueued();
     m_failures.insert(id, message);
     setStatus(message);
     emit catalogChanged();
@@ -584,8 +607,11 @@ void AddonManager::failTransfer(const QString &id, const QString &message)
 void AddonManager::cancel(const QString &id)
 {
     const auto transfer = m_transfers.value(id);
-    if (!transfer)
+    if (!transfer) {
+        if (m_installQueue.removeAll(id) > 0)
+            emit catalogChanged();
         return;
+    }
 
     transfer->cancelled = true;
     if (transfer->reply)
