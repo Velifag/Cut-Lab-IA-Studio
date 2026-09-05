@@ -235,3 +235,5 @@ GPLv3 — veja [LICENSE](LICENSE).
    <img alt="Gráfico de histórico de estrelas" src="https://api.star-history.com/chart?repos=Velifag/Cut-Lab-IA-Studio&type=date&legend=top-left" />
  </picture>
 </a>
+
+<p align="center">🌐 <a href="https://cutlabiastudio.com">cutlabiastudio.com</a></p>
