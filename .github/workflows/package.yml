@@ -16,7 +16,7 @@ on:
         default: all
         type: string
       android_identity:
-        description: "release (org.cutwire.drift) or ci (org.cutwire.drift.ci) package id"
+        description: "release (com.cutlabiastudio.studio) or ci (com.cutlabiastudio.studio.ci) package id"
         required: false
         default: ci
         type: string
@@ -277,13 +277,13 @@ jobs:
           # hwaccel::deviceAvailable() dlopens libva.so.2 and libva-drm.so.2 itself before
           # letting FFmpeg near VAAPI. See vaapiLoadable() in src/engine/HwAccel.cpp.
           ./linuxdeploy.AppImage --appdir AppDir --plugin qt --output appimage \
-            -d flatpak/org.cutwire.Drift.desktop \
-            -i flatpak/share/icons/hicolor/256x256/apps/org.cutwire.Drift.png \
+            -d resources/linux/com.cutlabiastudio.studio.desktop \
+            -i resources/linux/icons/hicolor/256x256/apps/com.cutlabiastudio.studio.png \
             -e AppDir/usr/bin/drift \
             -l /usr/lib/x86_64-linux-gnu/libssl.so.3 \
             -l /usr/lib/x86_64-linux-gnu/libcrypto.so.3
           appimage="$(ls ./*.AppImage | grep -iv linuxdeploy | head -n 1)"
-          mv "${appimage}" "dist/Drift-${{ inputs.version }}-x86_64.AppImage"
+          mv "${appimage}" "dist/CutLabIA-Studio-${{ inputs.version }}-x86_64.AppImage"
 
       - name: Upload AppImage artifact
         uses: actions/upload-artifact@v4
@@ -741,12 +741,12 @@ jobs:
         shell: bash
         run: |
           if [ "${{ inputs.android_identity }}" = "release" ]; then
-            echo "package=org.cutwire.drift" >> "$GITHUB_OUTPUT"
-            echo "app_name=Drift" >> "$GITHUB_OUTPUT"
+            echo "package=com.cutlabiastudio.studio" >> "$GITHUB_OUTPUT"
+            echo "app_name=CutLabIA Studio" >> "$GITHUB_OUTPUT"
             echo "version_code=" >> "$GITHUB_OUTPUT"
           else
-            echo "package=org.cutwire.drift.ci" >> "$GITHUB_OUTPUT"
-            echo "app_name=Drift CI" >> "$GITHUB_OUTPUT"
+            echo "package=com.cutlabiastudio.studio.ci" >> "$GITHUB_OUTPUT"
+            echo "app_name=CutLabIA Studio CI" >> "$GITHUB_OUTPUT"
             echo "version_code=${{ github.run_number }}" >> "$GITHUB_OUTPUT"
           fi
 

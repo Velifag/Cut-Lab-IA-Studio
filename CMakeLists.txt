@@ -642,8 +642,8 @@ endif()
 # It also collides with the <build>/Drift/ directory qt_add_qml_module(URI Drift) writes, which
 # on case-insensitive APFS fails the link with EISDIR.
 if(APPLE)
-    set(DRIFT_MACOS_EXECUTABLE "Drift")
-    set(DRIFT_MACOS_BUNDLE_ID "org.cutwire.Drift")
+    set(DRIFT_MACOS_EXECUTABLE "CutLabIA Studio")
+    set(DRIFT_MACOS_BUNDLE_ID "com.cutlabiastudio.studio")
     set(DRIFT_MACOS_ICON_FILE "Drift.icns")
 
     # Not CMake's MACOSX_BUNDLE_* properties: the NS* and LSMinimumSystemVersion keys have none.
@@ -877,9 +877,9 @@ if(ANDROID)
             "ssl_3/${ANDROID_ABI}/*.so files from https://github.com/KDAB/android_openssl.")
     endif()
 
-    set(DRIFT_ANDROID_PACKAGE_NAME "org.cutwire.drift" CACHE STRING
-        "Android application id (use org.cutwire.drift.ci for side-by-side test builds)")
-    set(DRIFT_ANDROID_APP_NAME "Drift" CACHE STRING
+    set(DRIFT_ANDROID_PACKAGE_NAME "com.cutlabiastudio.studio" CACHE STRING
+        "Android application id (use com.cutlabiastudio.studio.ci for side-by-side test builds)")
+    set(DRIFT_ANDROID_APP_NAME "CutLabIA Studio" CACHE STRING
         "Launcher label")
     # versionName is PROJECT_VERSION — same string the desktop binary embeds as DRIFT_VERSION.
     # versionCode is the Play-Store integer; default tracks that semver so a desktop bump is an
@@ -1086,18 +1086,22 @@ else()
                 DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT drift)
     endforeach()
 
-    # Desktop integration for Flatpak / freedesktop.
-    install(FILES flatpak/org.cutwire.Drift.desktop
+    # Desktop integration for freedesktop (Arch, AppImage). The Flatpak build has its own copy of
+    # this file at flatpak/org.cutwire.Drift.desktop, installed by flatpak-builder rather than
+    # this rule — that one keeps the "Drift" name and CutWire icon because the Flatpak app id
+    # (org.cutwire.Drift, tied to the cutwire.org domain) is not this fork's to claim.
+    install(FILES resources/linux/com.cutlabiastudio.studio.desktop
             DESTINATION ${CMAKE_INSTALL_DATADIR}/applications COMPONENT drift)
+    # The AppStream metadata and .drift MIME type registration are shared with the Flatpak build
+    # (its metainfo.xml doubles as the source of GitHub release notes — see
+    # scripts/extract_release_notes.py) and are not forked here.
     install(FILES flatpak/org.cutwire.Drift.metainfo.xml
             DESTINATION ${CMAKE_INSTALL_DATADIR}/metainfo COMPONENT drift)
     install(FILES flatpak/org.cutwire.Drift.xml
             DESTINATION ${CMAKE_INSTALL_DATADIR}/mime/packages COMPONENT drift)
-    # 1024px source is intentionally skipped: flatpak build-export rejects icons
-    # larger than 512x512.
     foreach(_size 64 128 256 512)
         install(FILES
-            flatpak/share/icons/hicolor/${_size}x${_size}/apps/org.cutwire.Drift.png
+            resources/linux/icons/hicolor/${_size}x${_size}/apps/com.cutlabiastudio.studio.png
             DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/${_size}x${_size}/apps COMPONENT drift)
     endforeach()
 endif()
