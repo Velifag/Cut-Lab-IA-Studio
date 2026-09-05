@@ -98,6 +98,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          # nullglob: the Flatpak job is continue-on-error (see package.yml) — when it fails
+          # (usually a flaky upstream source fetch, unrelated to this fork's own code)
+          # dist/flatpak-bundle/ never appears, and an unmatched glob would otherwise reach
+          # `gh release create` as a literal, nonexistent filename and fail the whole release.
+          shopt -s nullglob
           gh release create "${GITHUB_REF_NAME}" \
             --title "CutLabIA Studio ${GITHUB_REF_NAME}" \
             --notes-file notes.md \
