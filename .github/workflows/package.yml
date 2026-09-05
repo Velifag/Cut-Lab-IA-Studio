@@ -59,6 +59,10 @@ jobs:
     runs-on: ubuntu-latest
     if: inputs.platforms == 'all' || inputs.platforms == 'flatpak'
     timeout-minutes: 120
+    # This fork has no Flathub presence to publish to, so a source (e.g. surina.net for
+    # SoundTouch) timing out on flatpak-builder's dependency fetch shouldn't gate the release —
+    # the Windows/macOS/Linux/Android artifacts this fork actually ships don't depend on it.
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
 
@@ -375,7 +379,9 @@ jobs:
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force -Path dist\bin | Out-Null
-          Copy-Item "build\Release\Cut Lab[IA] Studio.exe" dist\bin -Force
+          # -LiteralPath: Copy-Item's default -Path treats [IA] in the app name as a wildcard
+          # character class, matching nothing and failing silently.
+          Copy-Item -LiteralPath "build\Release\Cut Lab[IA] Studio.exe" -Destination dist\bin -Force
           # --qmldir: Drift's own QML lives in the binary's resources, but the Qt Quick modules it
           # imports have to be deployed, and qmlimportscanner reads the sources to find them.
           & "${{ env.QT_ROOT_DIR }}\bin\windeployqt.exe" --release --no-translations `
