@@ -104,12 +104,12 @@ cmake --build build -j$(sysctl -n hw.ncpu)
 The build produces an application bundle rather than a bare executable, so run it with:
 
 ```bash
-open build/Drift.app          # or: ./build/Drift.app/Contents/MacOS/Drift to see stderr
+open "build/CutLabIA Studio.app"          # or: "./build/CutLabIA Studio.app/Contents/MacOS/CutLabIA Studio" to see stderr
 ```
 
 The bundle is not cosmetic: macOS treats a loose binary as a background process, with no Dock tile, no menu bar and no way to raise the window, and only `Info.plist` can set `NSHighResolutionCapable`, without which the UI and the preview render at 1x on Retina displays.
 
-Effects, transitions, templates and audio effects are staged into `Drift.app/Contents/Resources`, which `GpuPackageParse::defaultSearchPaths` adds as a search root next to the directory holding the executable. The `DRIFT_*_DIR` overrides behave as they do elsewhere.
+Effects, transitions, templates and audio effects are staged into `CutLabIA Studio.app/Contents/Resources`, which `GpuPackageParse::defaultSearchPaths` adds as a search root next to the directory holding the executable. The `DRIFT_*_DIR` overrides behave as they do elsewhere.
 
 ### Disk image
 
@@ -117,9 +117,9 @@ Effects, transitions, templates and audio effects are staged into `Drift.app/Con
 scripts/package-macos.sh
 ```
 
-Builds Release, runs `macdeployqt` to copy Qt, FFmpeg, OpenSSL, zstd and SoundTouch into `Contents/Frameworks`, drops the build machine's `LC_RPATH` entries, signs, and writes `dist/Drift-<version>-<arch>.dmg`. The rpath step matters: dyld searches the executable's rpaths before the `@loader_path` entries in the nested frameworks, so a bundle still listing `/opt/homebrew/opt/qt6/lib` loads the host's Qt on any Mac that has one.
+Builds Release, runs `macdeployqt` to copy Qt, FFmpeg, OpenSSL, zstd and SoundTouch into `Contents/Frameworks`, drops the build machine's `LC_RPATH` entries, signs, and writes `dist/CutLabIA-Studio-<version>-<arch>.dmg`. The rpath step matters: dyld searches the executable's rpaths before the `@loader_path` entries in the nested frameworks, so a bundle still listing `/opt/homebrew/opt/qt6/lib` loads the host's Qt on any Mac that has one.
 
-Signing is ad-hoc by default — enough to launch locally, since Apple Silicon will not run unsigned binaries, but it still shows the unidentified-developer prompt elsewhere. Without notarisation, opening it needs right-click → Open, or `xattr -dr com.apple.quarantine /Applications/Drift.app`.
+Signing is ad-hoc by default — enough to launch locally, since Apple Silicon will not run unsigned binaries, but it still shows the unidentified-developer prompt elsewhere. Without notarisation, opening it needs right-click → Open, or `xattr -dr com.apple.quarantine "/Applications/CutLabIA Studio.app"`.
 
 For a distributable build, sign with a Developer ID and notarise:
 

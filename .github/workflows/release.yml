@@ -83,9 +83,9 @@ jobs:
           - **Windows portable**: extract `CutLabIA-Studio-Portable-*.zip` anywhere and run `CutLabIA Studio.exe` from
             the `CutLabIA Studio` folder inside it. Nothing is installed, but settings and addons are still
             stored per-user under `%APPDATA%\CutLabIA Studio\CutLabIA Studio`.
-          - **macOS** (Apple Silicon): open `Drift-*-arm64.dmg` and drag Drift to Applications. The
-            app is signed ad-hoc rather than notarised, so the first launch needs right-click →
-            Open, or `xattr -dr com.apple.quarantine /Applications/Drift.app`.
+          - **macOS** (Apple Silicon): open `CutLabIA-Studio-*-arm64.dmg` and drag CutLabIA Studio to
+            Applications. The app is signed ad-hoc rather than notarised, so the first launch needs
+            right-click → Open, or `xattr -dr com.apple.quarantine "/Applications/CutLabIA Studio.app"`.
           - **Arch Linux**: `sudo pacman -U cutlabia-studio-*.pkg.tar.zst`
           - **Flatpak**: requires `flatpak` with the Flathub remote added (`flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo`), then `flatpak install --user Drift-*.flatpak`
           - **Android**: install the APK for your ABI (`arm64-v8a` on virtually all phones; `x86_64` for emulators). Sideload with `adb install Drift-*-arm64-v8a.apk`.

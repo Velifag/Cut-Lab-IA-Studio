@@ -578,8 +578,8 @@ jobs:
       # The script already names it from the project version, which is what a release tag carries.
       - name: Name the artifact for this release
         run: |
-          want="dist/Drift-${{ inputs.version }}-arm64.dmg"
-          for f in dist/Drift-*.dmg; do
+          want="dist/CutLabIA-Studio-${{ inputs.version }}-arm64.dmg"
+          for f in dist/CutLabIA-Studio-*.dmg; do
             [ "$f" = "$want" ] || mv "$f" "$want"
           done
 
