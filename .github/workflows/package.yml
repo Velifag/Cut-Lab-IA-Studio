@@ -443,8 +443,8 @@ jobs:
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force -Path dist | Out-Null
-          Copy-Item installer\windows\output\Drift-Setup-x64.exe `
-            "dist\Drift-Setup-${{ inputs.version }}-x64.exe" -Force
+          Copy-Item installer\windows\output\CutLabIA-Studio-Setup-x64.exe `
+            "dist\CutLabIA-Studio-Setup-${{ inputs.version }}-x64.exe" -Force
 
       - name: Upload installer artifact
         uses: actions/upload-artifact@v4
@@ -452,20 +452,21 @@ jobs:
           name: windows-installer
           path: dist/*.exe
 
-      # The same staged tree the installer wraps, minus the install: a zip holding a single Drift\
-      # folder that runs from wherever it is unpacked, touching no registry key and no Start menu.
-      # Relocatable, not self-contained — the app still keeps settings, addons, models and caches
-      # under %APPDATA%\Drift, so two copies on one machine share that state.
+      # The same staged tree the installer wraps, minus the install: a zip holding a single
+      # "CutLabIA Studio" folder that runs from wherever it is unpacked, touching no registry key
+      # and no Start menu. Relocatable, not self-contained — the app still keeps settings, addons,
+      # models and caches under %APPDATA%\CutLabIA Studio\CutLabIA Studio, so two copies on one
+      # machine share that state.
       #
       # 7z rather than Compress-Archive: the staged tree is several hundred MB of Qt and FFmpeg
       # DLLs, which is where Compress-Archive's in-memory approach gets slow.
       - name: Build portable zip
         shell: pwsh
         run: |
-          New-Item -ItemType Directory -Force -Path portable\Drift, dist\portable | Out-Null
-          Copy-Item dist\bin\* portable\Drift -Recurse -Force
+          New-Item -ItemType Directory -Force -Path "portable\CutLabIA Studio", dist\portable | Out-Null
+          Copy-Item dist\bin\* "portable\CutLabIA Studio" -Recurse -Force
           & "$env:ProgramFiles\7-Zip\7z.exe" a -tzip -mx=9 `
-            "dist\portable\Drift-Portable-${{ inputs.version }}-x64.zip" .\portable\Drift
+            "dist\portable\CutLabIA-Studio-Portable-${{ inputs.version }}-x64.zip" ".\portable\CutLabIA Studio"
 
       - name: Upload portable artifact
         uses: actions/upload-artifact@v4

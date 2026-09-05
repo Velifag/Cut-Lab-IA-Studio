@@ -31,7 +31,7 @@ SetupIconFile=..\..\resources\windows\drift.ico
 UninstallDisplayIcon={app}\{#MyAppExeName}
 ChangesAssociations=yes
 OutputDir=output
-OutputBaseFilename=Drift-Setup-x64
+OutputBaseFilename=CutLabIA-Studio-Setup-x64
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"

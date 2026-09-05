@@ -79,10 +79,10 @@ jobs:
           ## Installing
 
           - **AppImage** (Linux, any distro): `chmod +x Drift-*.AppImage && ./Drift-*.AppImage`
-          - **Windows installer**: run `Drift-Setup-*.exe`
-          - **Windows portable**: extract `Drift-Portable-*.zip` anywhere and run `CutLabIA Studio.exe` from
-            the `Drift` folder inside it. Nothing is installed, but settings and addons are still
-            stored per-user under `%APPDATA%\Drift`.
+          - **Windows installer**: run `CutLabIA-Studio-Setup-*.exe`
+          - **Windows portable**: extract `CutLabIA-Studio-Portable-*.zip` anywhere and run `CutLabIA Studio.exe` from
+            the `CutLabIA Studio` folder inside it. Nothing is installed, but settings and addons are still
+            stored per-user under `%APPDATA%\CutLabIA Studio\CutLabIA Studio`.
           - **macOS** (Apple Silicon): open `Drift-*-arm64.dmg` and drag Drift to Applications. The
             app is signed ad-hoc rather than notarised, so the first launch needs right-click →
             Open, or `xattr -dr com.apple.quarantine /Applications/Drift.app`.
