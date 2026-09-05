@@ -99,7 +99,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "${GITHUB_REF_NAME}" \
-            --title "Drift ${GITHUB_REF_NAME}" \
+            --title "CutLabIA Studio ${GITHUB_REF_NAME}" \
             --notes-file notes.md \
             dist/linux-appimage/*.AppImage \
             dist/windows-installer/*.exe \
