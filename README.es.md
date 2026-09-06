@@ -230,6 +230,13 @@ La compilación, el empaquetado, la arquitectura y el protocolo del agente está
 
 GPLv3 — consulta [LICENSE](LICENSE).
 
+## Créditos
+
+CutLabIA Studio comenzó como un fork de [Drift](https://github.com/CutWire-Studios/Drift), y la
+mayor parte del código es obra de CutWire Studios y de todos los que contribuyeron a ese proyecto.
+Gracias a todos ellos — consulta la lista completa en la
+[página de colaboradores de Drift](https://github.com/CutWire-Studios/Drift/graphs/contributors).
+
 ## Historial de estrellas
 
 <a href="https://www.star-history.com/?repos=Velifag%2FCut-Lab-IA-Studio&type=date&legend=top-left">

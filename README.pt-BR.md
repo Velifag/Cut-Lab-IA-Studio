@@ -226,6 +226,13 @@ Encontrou um bug ou tem uma ideia? Abra uma
 
 GPLv3 — veja [LICENSE](LICENSE).
 
+## Créditos
+
+O CutLabIA Studio começou como um fork do [Drift](https://github.com/CutWire-Studios/Drift), e a
+maior parte do código é trabalho da CutWire Studios e de todos que contribuíram com esse projeto.
+Obrigado a todos eles — veja a lista completa na
+[página de colaboradores do Drift](https://github.com/CutWire-Studios/Drift/graphs/contributors).
+
 ## Histórico de estrelas
 
 <a href="https://www.star-history.com/?repos=Velifag%2FCut-Lab-IA-Studio&type=date&legend=top-left">
