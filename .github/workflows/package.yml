@@ -791,7 +791,7 @@ jobs:
           [ -n "$APK" ] || { echo "no release APK under $BUILD/android-build" >&2; exit 1; }
 
           mkdir -p dist
-          OUT="dist/Drift-${VERSION}-${ABI}.apk"
+          OUT="dist/CutLabIA-Studio-${VERSION}-${ABI}.apk"
 
           if [ -z "${KEYSTORE_B64:-}" ]; then
             echo "::warning::ANDROID_KEYSTORE_BASE64 not set; uploading unsigned APK"
@@ -813,5 +813,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: android-apk-${{ matrix.abi }}
-          path: dist/Drift-${{ inputs.version }}-${{ matrix.abi }}.apk
+          path: dist/CutLabIA-Studio-${{ inputs.version }}-${{ matrix.abi }}.apk
           if-no-files-found: error

@@ -51,8 +51,8 @@ Descarga la versión para tu plataforma desde la
 | macOS | [Imagen de disco (.dmg, Apple Silicon)](https://github.com/Velifag/Cut-Lab-IA-Studio/releases/latest) |
 | Android | [APK (arm64-v8a)](https://github.com/Velifag/Cut-Lab-IA-Studio/releases/latest) · [APK (armeabi-v7a)](https://github.com/Velifag/Cut-Lab-IA-Studio/releases/latest) · [APK (x86_64)](https://github.com/Velifag/Cut-Lab-IA-Studio/releases/latest) |
 
-En un teléfono, descarga `Drift-*-arm64-v8a.apk` desde la última release e instálalo (o usa
-`adb install Drift-*-arm64-v8a.apk`). Usa la versión `x86_64` para emuladores.
+En un teléfono, descarga `CutLabIA-Studio-*-arm64-v8a.apk` desde la última release e instálalo (o usa
+`adb install CutLabIA-Studio-*-arm64-v8a.apk`). Usa la versión `x86_64` para emuladores.
 
 Consulta [todas las releases](https://github.com/Velifag/Cut-Lab-IA-Studio/releases) para versiones
 anteriores y changelogs completos.
