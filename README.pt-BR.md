@@ -203,10 +203,6 @@ barreira de login.**
 projeto de verdade — legendas, efeitos, áudio, recortes, multicâmera e uma linha do tempo assistida
 por IA se você quiser.
 
-## Ajude a traduzir o Drift
-
-[![Translation status](https://hosted.weblate.org/widget/cutwire-drift/drift-desktop/multi-auto.svg)](https://hosted.weblate.org/engage/cutwire-drift/)
-
 ## Para desenvolvedores
 
 Build, empacotamento, arquitetura e o protocolo do agente estão em `docs/`:

@@ -207,10 +207,6 @@ Es lo bastante rápido para un corte de redes sociales de 30 segundos y lo basta
 proyecto real — subtítulos, efectos, audio, recortes, multicámara y una línea de tiempo asistida por
 IA si la quieres.
 
-## Ayúdanos a traducir Drift
-
-[![Translation status](https://hosted.weblate.org/widget/cutwire-drift/drift-desktop/multi-auto.svg)](https://hosted.weblate.org/engage/cutwire-drift/)
-
 ## Para desarrolladores
 
 La compilación, el empaquetado, la arquitectura y el protocolo del agente están en `docs/`:

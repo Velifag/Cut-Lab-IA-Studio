@@ -238,9 +238,15 @@ int main(int argc, char *argv[])
                  "for a different Qt version than this binary. Install a matching qt6-svg "
                  "(same version as qt6-base).");
     }
-    // Associates the window with the installed .desktop entry so shells (notably
-    // Wayland) can find its icon and app metadata.
-    QGuiApplication::setDesktopFileName(QStringLiteral("org.cutwire.Drift"));
+    // Associates the window with the installed .desktop entry so shells (notably Wayland) can find
+    // its icon and app metadata. The Flatpak build still installs flatpak/org.cutwire.Drift.desktop
+    // (see CMakeLists.txt) since that app id isn't this fork's to claim; every other Linux build
+    // (AppImage, Arch) installs resources/linux/com.cutlabiastudio.studio.desktop instead, so the
+    // id here has to follow which one is actually on disk or shells can't resolve the app's icon.
+    const bool inFlatpak = qEnvironmentVariableIsSet("FLATPAK_ID")
+        || QFile::exists(QStringLiteral("/.flatpak-info"));
+    QGuiApplication::setDesktopFileName(inFlatpak ? QStringLiteral("org.cutwire.Drift")
+                                                   : QStringLiteral("com.cutlabiastudio.studio"));
     // Title bar / taskbar icon when no desktop entry is available (Windows, and
     // Linux runs from the build tree). The .exe still needs the Windows .rc icon
     // for Explorer and pinned-taskbar identity.

@@ -192,10 +192,6 @@ looking good. CutLabIA Studio is the opposite: **yours, on your computer, GPLv3,
 It is fast enough for a 30-second social cut and deep enough for a real project — captions, effects,
 audio, cutouts, multicam, and an AI-assisted timeline if you want one.
 
-## Help us translate Drift
-
-[![Translation status](https://hosted.weblate.org/widget/cutwire-drift/drift-desktop/multi-auto.svg)](https://hosted.weblate.org/engage/cutwire-drift/)
-
 ## For developers
 
 Build, packaging, architecture, and agent protocol live in `docs/`:
