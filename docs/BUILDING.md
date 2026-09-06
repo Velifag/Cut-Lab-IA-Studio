@@ -162,7 +162,7 @@ Then, for notarisation, **either** an App Store Connect API key:
 
 Encode the two files with `base64 -i cert.p12 | pbcopy`. Setting only the certificate secrets signs without notarising. All of them require a paid Apple Developer account.
 
-Homebrew ships single-architecture bottles, so the image is Apple Silicon only and Intel Macs build from source. Its deployment floor also follows Homebrew's rather than the macOS 12 a source build targets — build against Qt from qt.io to reach 12.
+Homebrew ships single-architecture bottles, so a `package-macos.sh` run only packages the architecture of the Mac it runs on — an Intel Mac needs its own Homebrew install (or a source build) to produce an `x86_64` image. The release workflow covers both by running natively on an Apple Silicon runner and an Intel one (`macos-15-intel`) rather than building a universal binary. Homebrew's deployment floor also differs from the macOS 12 a source build targets — build against Qt from qt.io to reach 12.
 
 ## Addons
 

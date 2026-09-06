@@ -48,7 +48,7 @@ Descarga la versión para tu plataforma desde la
 |----------|---------|
 | Linux | [AppImage](https://github.com/Velifag/Cut-Lab-IA-Studio/releases/latest) |
 | Windows | [Instalador (.exe)](https://github.com/Velifag/Cut-Lab-IA-Studio/releases/latest) · [Versión portátil (zip)](https://github.com/Velifag/Cut-Lab-IA-Studio/releases/latest) |
-| macOS | [Imagen de disco (.dmg, Apple Silicon)](https://github.com/Velifag/Cut-Lab-IA-Studio/releases/latest) |
+| macOS | [Imagen de disco (.dmg, Apple Silicon)](https://github.com/Velifag/Cut-Lab-IA-Studio/releases/latest) · [Imagen de disco (.dmg, Intel)](https://github.com/Velifag/Cut-Lab-IA-Studio/releases/latest) |
 | Android | [APK (arm64-v8a)](https://github.com/Velifag/Cut-Lab-IA-Studio/releases/latest) · [APK (armeabi-v7a)](https://github.com/Velifag/Cut-Lab-IA-Studio/releases/latest) · [APK (x86_64)](https://github.com/Velifag/Cut-Lab-IA-Studio/releases/latest) |
 
 En un teléfono, descarga `CutLabIA-Studio-*-arm64-v8a.apk` desde la última release e instálalo (o usa

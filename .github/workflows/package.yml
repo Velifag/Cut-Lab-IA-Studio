@@ -475,11 +475,22 @@ jobs:
           path: dist/portable/*.zip
 
   macos:
-    name: macOS disk image
-    # Apple Silicon only: Homebrew bottles are single-architecture.
-    runs-on: macos-15
+    name: macOS disk image (${{ matrix.arch }})
+    # Two native builds rather than one universal binary: Homebrew bottles are single-architecture,
+    # so a fat binary would mean cross-building half of it under Rosetta. macos-15-intel is GitHub's
+    # last x86_64 image (Apple has stopped making Intel Macs); it's due to retire in Fall 2027, at
+    # which point this arm entry stays and the intel one has to go or move to a self-hosted runner.
+    runs-on: ${{ matrix.runner }}
     if: inputs.platforms == 'all' || inputs.platforms == 'macos'
     timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-15
+            arch: arm64
+          - runner: macos-15-intel
+            arch: x86_64
     steps:
       - uses: actions/checkout@v4
 
@@ -578,7 +589,7 @@ jobs:
       # The script already names it from the project version, which is what a release tag carries.
       - name: Name the artifact for this release
         run: |
-          want="dist/CutLabIA-Studio-${{ inputs.version }}-arm64.dmg"
+          want="dist/CutLabIA-Studio-${{ inputs.version }}-${{ matrix.arch }}.dmg"
           for f in dist/CutLabIA-Studio-*.dmg; do
             [ "$f" = "$want" ] || mv "$f" "$want"
           done
@@ -586,7 +597,7 @@ jobs:
       - name: Upload disk image artifact
         uses: actions/upload-artifact@v4
         with:
-          name: macos-dmg
+          name: macos-dmg-${{ matrix.arch }}
           path: dist/*.dmg
 
   arch:
