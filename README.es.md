@@ -222,6 +222,24 @@ La compilación, el empaquetado, la arquitectura y el protocolo del agente está
 ¿Encontraste un error o tienes una idea? Abre un
 [issue en GitHub](https://github.com/Velifag/Cut-Lab-IA-Studio/issues).
 
+## Apoya el proyecto
+
+CutLabIA Studio es gratuito y siempre lo será — GPLv3, sin cuenta, sin marca de agua. Si te resulta
+útil y quieres ayudar a mantenerlo, las donaciones son bienvenidas y van directo al hosting (el
+mirror de addons) y al tiempo de desarrollo.
+
+| Moneda | Red | Dirección |
+|---|---|---|
+| Bitcoin (BTC) | Bitcoin | `16HL151bAWcZEJN8A89kURQKJeXwTCxZCA` |
+| USDT | Solana (SPL) | `DXj83uypNgPWqvJMDFX7pojkPLnQby2cq9F7t8Zgqyn4` |
+| USDT | Polygon | `0xcf43c96e5b66ada0389b99c62ebfe59becf1659e` |
+
+⚠️ **Verifica la red antes de enviar.** Enviar por la red equivocada (por ejemplo, USDT vía Ethereum
+mainnet a la dirección de Polygon de arriba) puede causar la pérdida permanente de los fondos. Copia
+la dirección exactamente, y verifícala carácter por carácter con esta página.
+
+¿No usas cripto? Pronto habrá una opción vía GitHub Sponsors/Ko-fi.
+
 ## Licencia
 
 GPLv3 — consulta [LICENSE](LICENSE).
