@@ -449,6 +449,20 @@ ThemedDialog {
                         cursorShape: parent.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
                     }
                 }
+
+                ThemedLabel {
+                    width: parent.width
+                    size: "sm"
+                    tone: "default"
+                    textFormat: Text.RichText
+                    linkColor: Theme.primary
+                    text: "<a href=\"https://github.com/Velifag/Cut-Lab-IA-Studio#support-the-project\">%1</a>"
+                          .arg(qsTr("Support the project"))
+                    onLinkActivated: (link) => Qt.openUrlExternally(link)
+                    HoverHandler {
+                        cursorShape: parent.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
+                    }
+                }
             }
         }
     }

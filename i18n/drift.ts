@@ -3644,6 +3644,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Support the project</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Supported</source>
         <translation type="unfinished"></translation>
     </message>

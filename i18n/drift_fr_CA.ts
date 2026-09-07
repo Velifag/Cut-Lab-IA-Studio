@@ -3677,6 +3677,10 @@
         <source>Questions and support</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Support the project</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DenoiseWindow</name>
